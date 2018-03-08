@@ -11,26 +11,23 @@
             <td>Categoria</td>
             <td>Ações</td>
         </tr>
-        <tr>
-            <td>Nome</td>
-            <td>Preço</td>
-            <td>Descrição</td>
-            <td>Categoria</td>
-        </tr>
         <?php
             $produtos = listaProdutos($conexao);
-            foreach($produtos as $produto):
+            foreach ($produtos as $produto):
         ?>
         <tr>
-            <td><?=$produto["nome"];?></td>
-            <td><?=$produto["preco"];?></td>
-            <td><?=$produto["descricao"];?></td>
-            <td><?=$produto["cat_nome"];?></td>
+            <td><?=$produto["nome"]?></td>
+            <td><?=$produto["preco"]?></td>
+            <td><?=$produto["descricao"]?></td>
+            <td><?=$produto["cat_nome"]?></td>
+            <td>
+                <a class="btn-primary" href="produto-update-form.php">U</a>
+            </td>
         </tr>
-            <a href="produto-update-form.php" class="btn btn-primary">U</a>
-
-        <?php endforeach; ?>
+        <?php 
+            endforeach
+        ?>
     </table>
-<?php
-    include_once("rodape.php");
-?>
+    <?php
+        include_once("rodape.php");
+    ?>
