@@ -12,7 +12,7 @@
             <td>Ações</td>
         </tr>
         <?php
-            $produtos = listaProdutos($conexao);
+            $produtos = listaProdutos($conn);
             foreach ($produtos as $produto):
         ?>
         <tr>
@@ -25,7 +25,7 @@
             </td>
         </tr>
         <?php 
-            endforeach
+            endforeach;
         ?>
     </table>
     <?php
