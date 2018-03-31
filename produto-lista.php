@@ -12,7 +12,7 @@
             <td>Ações</td>
         </tr>
         <?php
-            $produtos = listaProdutos($conn);
+            $produtos = listaProdutos($conexao);
             foreach ($produtos as $produto):
         ?>
         <tr>
@@ -21,7 +21,8 @@
             <td><?=$produto["descricao"]?></td>
             <td><?=$produto["cat_nome"]?></td>
             <td>
-                <a class="btn-primary" href="produto-update-form.php">U</a>
+                <a class="btn-primary" href="produto-update-form.php?id=<?=$produto['id']?>">Atualizar</a>
+                <a class="btn-primary" href="produto-delete-confirma.php?id=<?=$produto['id']?>">Deletar</a>
             </td>
         </tr>
         <?php 
