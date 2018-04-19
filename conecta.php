@@ -1,10 +1,11 @@
 <?php
-
-    $host = 'localhost';
-    $user = 'root';
-    $pass = '';
-    $dbname = 'loja';
-
-    $conexao = mysqli_connect($host,$user,$pass,$dbname);
-
+    class BancoDedados {
+        private $con;
+        function __construct($host,$user,$pass,$db) {
+            $this->con = mysqli_connect($host,$user,$pass,$db);
+        }
+        function getCon() {
+            return $this->con;
+        }
+    }
 ?>

@@ -1,9 +1,12 @@
 <?php 
-    include_once("cabecalho.php");
-    include_once("conecta.php");
-    include_once("produto-database.php");
+    include_once('cabecalho.php');
+    include_once('conecta.php');
+    include_once('produto-database.php');
+    $conexao = new BancoDeDados("localhost","root","","loja");
+    $prod = new Produto($conexao);
 ?>
-    <table class="table table-striped table-bordered">
+
+    <table class="table table-striped table-bordered meio">
         <tr>
             <td>Nome</td>
             <td>Preço</td>
@@ -11,24 +14,27 @@
             <td>Categoria</td>
             <td>Ações</td>
         </tr>
-        <?php
-            $produtos = listaProdutos($conexao);
-            foreach ($produtos as $produto):
-        ?>
         <tr>
-            <td><?=$produto["nome"]?></td>
-            <td><?=$produto["preco"]?></td>
-            <td><?=$produto["descricao"]?></td>
-            <td><?=$produto["cat_nome"]?></td>
+            <?php
+                $produtos = $prod->listarProdutos();
+                foreach ($produtos as $produto) :
+            ?>
+                
+            <td><?=$produto['nome']?></td>
+            <td><?=$produto['preco']?></td>
+            <td><?=$produto['descricao']?></td>
+            <td><?=$produto['cat_nome']?></td>
             <td>
-                <a class="btn-primary" href="produto-update-form.php?id=<?=$produto['id']?>">Atualizar</a>
-                <a class="btn-primary" href="produto-delete-confirma.php?id=<?=$produto['id']?>">Deletar</a>
+                <a href="produto-update-form.php?id=<?=$produto['id']?>" class="btn btn-primary"><span class="glyphicon glyphicon-refresh"></span></a>
+                <a href="produto-delete-confirma.php?id=<?=$produto['id']?>" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span></a>
             </td>
         </tr>
-        <?php 
-            endforeach;
-        ?>
+            <?php
+                endforeach;
+            ?>
+        
     </table>
-    <?php
-        include_once("rodape.php");
-    ?>
+
+<?php 
+    include_once('rodape.php');
+?>

@@ -2,12 +2,11 @@
     include_once('cabecalho.php');
     include_once('conecta.php');
     include_once('produto-database.php');
-
-    $sucesso = removeProduto($conexao,$_POST['id']);
+    $conexao = new BancoDeDados("localhost","root","","loja");
+    $prod = new Produto($conexao);
+    $sucesso = $prod->removeProduto($_POST['id']);
 ?>
-?>
-
-<div class="meio">
+    <div class="meio">
         <?php if($sucesso): ?>
             <h1>Removido com sucesso!</h1>
         <?php else: ?>

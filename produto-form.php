@@ -2,9 +2,10 @@
     include_once('cabecalho.php');
     include_once('conecta.php');
     include_once('produto-database.php');
-    $categorias = buscarCategorias($conexao);
+    $conexao = new BancoDeDados("localhost","root","","loja");
+    $prod = new Produto($conexao);
+    $categorias = $prod->buscarCategorias();
 ?>
-
     <form action="produto-add.php" method="POST">        
         <div class="form-group">
             <label for="nome">Nome</label>
